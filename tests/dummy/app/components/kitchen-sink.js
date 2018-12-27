@@ -2,6 +2,7 @@ import Component from '@ember/component';
 import { argument } from '@ember-decorators/argument';
 import {
   Any,
+  ComponentDefinition,
   arrayOf,
   optional,
   oneOf,
@@ -20,6 +21,9 @@ import template from '../templates/components/kitchen-sink';
 export default class KitchenSinkComponent extends Component {
   @argument(Any)
   anything;
+
+  @argument(ComponentDefinition)
+  childComponent;
 
   @argument('string')
   someString;

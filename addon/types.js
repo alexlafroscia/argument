@@ -1,6 +1,9 @@
 import unionOf from './-private/types/union-of';
 
 export { default as Any } from './-private/validators/any';
+export {
+  default as ComponentDefinition
+} from './-private/validators/component-definition';
 
 export { default as arrayOf } from './-private/types/array-of';
 export { default as optional } from './-private/types/optional';
