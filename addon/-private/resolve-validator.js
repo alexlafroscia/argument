@@ -14,6 +14,7 @@ import {
   UNDEFINED as UNDEFINED_VALUE
 } from './validators/value-match';
 import { not, or } from './combinators/index';
+import { isExtensionOf } from './utils/object';
 
 const primitiveTypeValidators = {
   any: new AnyValidator('any'),
@@ -44,6 +45,8 @@ export default function resolveValidator(type) {
     return UNDEFINED_VALUE;
   } else if (type instanceof BaseValidator) {
     return type;
+  } else if (isExtensionOf(type, BaseValidator)) {
+    return new type();
   } else if (typeof type === 'function' || typeof type === 'object') {
     // We allow objects for certain classes in IE, like Element, which have typeof 'object' for some reason
     return new InstanceOfValidator(type);
